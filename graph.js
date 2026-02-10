@@ -25,8 +25,8 @@ var cy = cytoscape({
         'text-halign': 'center',
         'background-color': '#4f46e5',
         'color': '#fff',
-        'width': 60,
-        'height': 60,
+        'width': 40,
+        'height': 40,
         'font-size': '10px'
       }
     },
