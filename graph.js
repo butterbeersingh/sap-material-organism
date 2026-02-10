@@ -48,8 +48,8 @@ var cy = cytoscape({
       selector: '#MARA',
       style: {
         'background-color': '#dc2626',
-        'width': 80,
-        'height': 80
+        'width': 60,
+        'height': 60
       }
     }
   ],
