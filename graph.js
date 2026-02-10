@@ -1,5 +1,28 @@
 var cy = cytoscape({
   container: document.getElementById('cy'),
+  cy.on('mouseover', 'node', function (evt) {
+  evt.target.animate({
+    style: {
+      'transform': 'scale(1.1)'
+    }
+  }, {
+    duration: 150
+  });
+});
+cy.on('mouseout', 'node', function (evt) {
+  evt.target.animate({
+    style: {
+      'transform': 'scale(1)'
+    }
+  }, {
+    duration: 150
+  });
+});
+cy.on('tap', 'node', function (evt) {
+  cy.nodes().removeClass('selected');
+  evt.target.addClass('selected');
+});
+
 
   elements: [
     // Nodes
@@ -18,40 +41,56 @@ var cy = cytoscape({
 
   style: [
     {
-      selector: 'node',
-      style: {
-        'label': 'data(label)',
-        'text-valign': 'center',
-        'text-halign': 'center',
-        'background-color': '#4f46e5',
-        'color': '#fff',
-        'width': 40,
-        'height': 40,
-        'font-size': '10px'
-      }
-    },
+  selector: 'node',
+  style: {
+    'label': 'data(label)',
+    'text-valign': 'center',
+    'text-halign': 'center',
+
+    // KEY FIXES
+    'shape': 'ellipse',
+    'padding': '12px',
+    'width': 'label',
+    'height': 'label',
+    'text-wrap': 'wrap',
+    'text-max-width': '90px',
+
+    'background-color': '#4f46e5',
+    'color': '#fff',
+    'font-size': '11px',
+    'font-weight': 'bold'
+  }
+},
     {
-      selector: 'edge',
-      style: {
-        'label': 'data(label)',
-        'curve-style': 'bezier',
-        'target-arrow-shape': 'triangle',
-        'line-color': '#999',
-        'target-arrow-color': '#999',
-        'font-size': '8px',
-        'text-background-color': '#fff',
-        'text-background-opacity': 1,
-        'text-background-padding': '2px'
-      }
-    },
+  selector: 'edge',
+  style: {
+    'label': 'data(label)',
+    'curve-style': 'bezier',
+    'target-arrow-shape': 'triangle',
+    'line-color': '#9ca3af',
+    'target-arrow-color': '#9ca3af',
+    'font-size': '9px',
+    'color': '#111',
+    'text-background-color': '#fff',
+    'text-background-opacity': 1,
+    'text-background-padding': '3px'
+  }
+},
     {
-      selector: '#MARA',
-      style: {
-        'background-color': '#dc2626',
-        'width': 60,
-        'height': 60
-      }
-    }
+  selector: '#MARA',
+  style: {
+    'background-color': '#dc2626',
+    'font-size': '12px'
+  }
+}
+    {
+  selector: '.selected',
+  style: {
+    'border-width': 3,
+    'border-color': '#facc15',
+    'background-color': '#1d4ed8'
+  }
+}
   ],
 
   layout: {
